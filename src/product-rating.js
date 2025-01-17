@@ -27,10 +27,6 @@ export default class ProductRatingWidget {
 
   createWidgetContent() {
     this.widgetContainer.innerHTML = `
-      <header class="widget__header">
-        <h3>التقييم</h3>
-        <p>التقييم الحالي للمنتج</p>
-      </header>
       <div class="rating-stars">
         ${this.getStarsHTML()}
       </div>
