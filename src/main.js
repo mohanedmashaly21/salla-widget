@@ -1,6 +1,6 @@
 import { CLOSE_ICON, MESSAGE_ICON, styles } from "./assets.js";
-
-class Widget {
+import ProductRatingWidget from "./product-rating.js";
+class WidgetReviews {
   constructor(position = "bottom-right") {
     this.position = this.getPosition(position);
     this.open = false;
@@ -30,6 +30,7 @@ class Widget {
       (key) => (container.style[key] = this.position[key])
     );
     document.body.appendChild(container);
+
 
     /**
      * Create a button element and give it a class of button__container
@@ -76,6 +77,9 @@ class Widget {
      */
     container.appendChild(this.widgetContainer);
     container.appendChild(buttonContainer);
+    const formButton = document.querySelector('.form-button');
+    formButton.addEventListener("click", this.toggleSubmit.bind(this));
+
   }
 
   createWidgetContent() {
@@ -92,6 +96,7 @@ class Widget {
                 type="text"
                 id="review_title"
                 name="review_title"
+                required="required"
                 placeholder="اكتب عنوان رأيك"
                 />
             </div>
@@ -101,6 +106,7 @@ class Widget {
                 <textarea
                 id="review_message"
                 name="review_message"
+                required="required"
                 placeholder="اكتب رأيك"
                 rows="6"
                 ></textarea>
@@ -117,8 +123,8 @@ class Widget {
             <label for="star2" title="text">2 stars</label>
             <input type="radio" id="star1" name="rate" value="1" />
             <label for="star1" title="text">1 star</label>
-  </div>
-            <button>ارسل  رأيك</button>
+            </div>
+            <button type="submit" class="form-button">ارسل  رأيك</button>
         </form>
     `;
   }
@@ -145,8 +151,9 @@ class Widget {
   }
 }
 
-function initializeWidget() {
-  return new Widget();
+function initializeWidgetReviews() {
+  const widget = new WidgetReviews();
+  const productWidget = new ProductRatingWidget();
 }
 
-initializeWidget();
+initializeWidgetReviews();

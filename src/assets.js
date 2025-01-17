@@ -98,7 +98,7 @@ export const styles = `
     }
     .rate {
         height: 46px;
-        padding:0% 25%;
+        padding:0% 28% 20%;
     }
     .rate:not(:checked) > input {
         position:absolute;
